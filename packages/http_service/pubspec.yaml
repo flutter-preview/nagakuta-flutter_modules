@@ -1,8 +1,8 @@
 name: http_service
 description: A starting point for Dart libraries or applications.
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/nagakuta/flutter_modules/http_service/
-publish_to: none
+publish_to: https://dart.cloudsmith.io/nagakuta_flutter/modules/
 
 environment:
   sdk: ^3.0.0
@@ -10,6 +10,9 @@ environment:
 dependencies:
   # Freezed Annotation
   freezed_annotation: ^2.0.0
+
+  # Http
+  http: ^1.0.0
 
   # Meta
   meta: ^1.0.0
