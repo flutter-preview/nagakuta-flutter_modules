@@ -1,0 +1,14 @@
+targets:
+  $default:
+    sources:
+      - $package$
+      - lib/$lib$
+      - lib/**.dart
+    builders:
+      freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/src/internal/adaptive_view/types.dart
+            - lib/src/internal/device_size.dart
+            - lib/src/internal/exception.dart
