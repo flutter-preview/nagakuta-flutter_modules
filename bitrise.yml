@@ -1,0 +1,66 @@
+format_version: "11"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: flutter
+trigger_map:
+- pull_request_target_branch: stable
+  workflow: test
+workflows:
+  analyze:
+    before_run:
+    - setup
+    after_run: []
+    steps:
+    - script:
+        title: Analyze packages
+        inputs:
+        - is_debug: "yes"
+        - content: |
+            #!/usr/bin/env bash
+            set -e
+            set -x
+
+            melos bootstrap
+  cleanup:
+    steps:
+    - cache-push: {}
+  setup:
+    steps:
+    - activate-ssh-key:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone: {}
+    - cache-pull: {}
+    - install-flutter-version-manager: {}
+    - script:
+        title: Install Melos
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -e
+            set -x
+
+            fvm dart pub global activate melos
+  test:
+    before_run:
+    - analyze
+    after_run:
+    - cleanup
+    steps:
+    - script:
+        title: Run test
+        inputs:
+        - is_debug: "yes"
+        - content: |-
+            #!/usr/bin/env bash
+            set -e
+            set -x
+
+            melos run test
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.3.x-ventura
+    machine_type_id: g2-m1.4core
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_FLUTTER_PROJECT_LOCATION: packages
