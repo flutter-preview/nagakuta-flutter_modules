@@ -1,0 +1,20 @@
+targets:
+  $default:
+    sources:
+      - $package$
+      - lib/$lib$
+      - lib/**.dart
+      - test/**.dart
+    builders:
+      freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/src/status.dart
+      mockito|mockBuilder:
+        enabled: true
+        generate_for:
+          include:
+            - test/client/client_test.dart
+      riverpod_generator:
+        enabled: false
