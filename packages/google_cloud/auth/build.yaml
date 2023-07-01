@@ -7,7 +7,10 @@ targets:
     builders:
       freezed:
         enabled: false
-      mockito:
-        enabled: false
+      mockito|mockBuilder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/src/service.dart
       riverpod_generator:
         enabled: false
