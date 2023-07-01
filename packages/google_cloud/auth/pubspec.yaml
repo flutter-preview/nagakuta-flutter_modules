@@ -1,6 +1,6 @@
 name: google_cloud_auth_service
 description: A starting point for Dart libraries or applications.
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/nagakuta/flutter_modules/google_cloud_auth_service/
 publish_to: https://dart.cloudsmith.io/nagakuta_flutter/modules/
 
