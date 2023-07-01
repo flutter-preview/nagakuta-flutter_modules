@@ -11,6 +11,12 @@ dependencies:
   # Freezed Annotation
   freezed_annotation: ^2.0.0
 
+  # GoogleAPIs Auth
+  googleapis_auth: ">=1.4.0 <1.5.0"
+
+  # Http
+  http: ^1.0.0
+
   # Meta
   meta: ^1.0.0
 
